@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Mishi 🎂</title>
+
+<style>
+
+body{
+margin:0;
+font-family: 'Segoe UI', sans-serif;
+background: linear-gradient(135deg,#ff9ad5,#c77dff);
+color:white;
+text-align:center;
+overflow-x:hidden;
+}
+
+/* Title */
+
+h1{
+font-size:50px;
+margin-top:60px;
+text-shadow:0 0 20px white;
+}
+
+.container{
+padding:20px;
+}
+
+/* Button */
+
+button{
+padding:15px 30px;
+border:none;
+border-radius:30px;
+background:#ff4db8;
+color:white;
+font-size:18px;
+cursor:pointer;
+margin:10px;
+box-shadow:0 0 10px rgba(255,255,255,0.6);
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+background:#ff70c0;
+}
+
+/* Gift */
+
+.gift{
+font-size:80px;
+cursor:pointer;
+margin:30px;
+}
+
+/* Hidden Sections */
+
+.hidden{
+display:none;
+}
+
+/* Cake */
+
+.cake{
+font-size:90px;
+margin-top:20px;
+animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-15px)}
+}
+
+/* Balloons */
+
+.balloon{
+position:fixed;
+bottom:-100px;
+font-size:40px;
+animation:float 10s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0)}
+100%{transform:translateY(-120vh)}
+}
+
+/* Confetti */
+
+.confetti{
+position:fixed;
+width:10px;
+height:10px;
+background:white;
+top:-10px;
+animation:fall 4s linear infinite;
+}
+
+@keyframes fall{
+to{
+transform:translateY(100vh) rotate(360deg);
+}
+}
+
+/* Fireworks */
+
+.firework{
+position:fixed;
+width:6px;
+height:6px;
+background:white;
+border-radius:50%;
+animation:explode 1s ease-out forwards;
+}
+
+@keyframes explode{
+from{
+transform:scale(1);
+opacity:1;
+}
+to{
+transform:scale(15);
+opacity:0;
+}
+}
+
+/* Message */
+
+.message{
+font-size:22px;
+max-width:700px;
+margin:auto;
+margin-top:20px;
+line-height:1.6;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Happy Birthday Mishi 🎂</h1>
+
+<div class="container">
+
+<p id="typewriter"></p>
+
+<div class="gift" onclick="openGift()">🎁</div>
+
+<button onclick="showCake()">Cut the Cake 🎂</button>
+
+<button onclick="celebrate()">Celebrate 🎆</button>
+
+<button onclick="secret()">Message for you💌</button>
+
+<div id="cake" class="hidden">
+<div class="cake">🎂</div>
+<p>Make a wish Mishi ✨</p>
+</div>
+
+<div id="secretMessage" class="hidden message">
+
+Dear Mishi,<br><br>
+
+When I first saw you in the group chat I thought you were very strict and serious.<br><br>
+
+But after talking with you I realized you are actually a very polite and calm-hearted person.<br><br>
+
+I’m really happy for you today.<br><br>
+
+Wishing you happiness, success and lots of smiles in your life.<br><br>
+
+Happy Birthday Mishi 🎉
+
+
+</div>
+
+</div>
+
+<script>
+
+/* Typewriter */
+
+const text = "Today is a very special day because it's your birthday — Mishi";
+let i = 0;
+
+function typeWriter(){
+if(i < text.length){
+document.getElementById("typewriter").innerHTML += text.charAt(i);
+i++;
+setTimeout(typeWriter,50);
+}
+}
+
+typeWriter();
+
+/* Gift */
+
+function openGift(){
+alert("Surprise! This page was made especially for you Mishi 🎉");
+}
+
+/* Cake */
+
+function showCake(){
+document.getElementById("cake").classList.remove("hidden");
+createConfetti();
+}
+
+/* Secret Message */
+
+function secret(){
+document.getElementById("secretMessage").classList.toggle("hidden");
+}
+
+/* Confetti */
+
+function createConfetti(){
+
+for(let i=0;i<100;i++){
+
+let conf=document.createElement("div");
+
+conf.className="confetti";
+
+conf.style.left=Math.random()*100+"vw";
+
+conf.style.backgroundColor=`hsl(${Math.random()*360},100%,70%)`;
+
+conf.style.animationDuration=3+Math.random()*3+"s";
+
+document.body.appendChild(conf);
+
+}
+}
+
+/* Fireworks */
+
+function celebrate(){
+
+for(let i=0;i<20;i++){
+
+let fire=document.createElement("div");
+
+fire.className="firework";
+
+fire.style.left=Math.random()*100+"vw";
+
+fire.style.top=Math.random()*80+"vh";
+
+fire.style.backgroundColor=`hsl(${Math.random()*360},100%,70%)`;
+
+document.body.appendChild(fire);
+
+setTimeout(()=>fire.remove(),1000);
+
+}
+
+}
+
+/* Balloons */
+
+function createBalloons(){
+
+for(let i=0;i<20;i++){
+
+let balloon=document.createElement("div");
+
+balloon.className="balloon";
+
+balloon.innerHTML="🎈";
+
+balloon.style.left=Math.random()*100+"vw";
+
+balloon.style.animationDuration=6+Math.random()*6+"s";
+
+document.body.appendChild(balloon);
+
+}
+
+}
+
+createBalloons();
+
+</script>
+
+</body>
+</html>
